@@ -1,0 +1,27 @@
+<script>
+var myData = new Firebase('https://sixdegrees.firebaseIO.com'); //"mydata" links up Firebase
+
+  // putting things into firebase
+
+  $('#messageInput').keypress(function (e) { //whenever key is pressed (keypress == 'enter'), set "name" and "message" to name and message in index.html.erb. 
+        if (e.keyCode == 13) { //13 == "enter"
+          var n = $('#nameInput').val();
+          var t = $('#messageInput').val();
+          myData.push({name: n, text: t}); // "push()" allows chat to support a list of messages, not just one message
+          $('#messageInput').val(''); // reset msg input
+        }
+      });
+
+  // getting things from firebase
+
+  myData.on('child_added', function(snapshot) {  
+  // 'child_added' event notifies the arrival of individual messages. 
+  var message = snapshot.val(); 
+  // snapshot of each chat message's data taken
+  displayChatMessage(message.name, message.text)
+  });
+  function displayChatMessage(name, text) {
+        $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+      };
+</script>
