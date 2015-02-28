@@ -15,7 +15,8 @@ private
 
   def sender_has_invitations
   end
+  
 end
 
 
-end
+

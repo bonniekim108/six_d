@@ -1,0 +1,16 @@
+
+<% provide(:title, @user.username) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <p>Hello, <%= @user.username%>!</p>
+      <span>Pending Connections:</span>
+        <unless @invitees.blank? %>
+        <% @invitees.each do |invitee| %>
+
+      <span>Added Connections:</span>
+        <% @friends. each do |friend| %>
+    </section>
+  </aside>
+</div>
+<% end %>
