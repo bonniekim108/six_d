@@ -19,6 +19,12 @@ gem 'firebase'
 
 gem 'figaro'
 
+gem 'omniauth', '~> 1.2.2'
+
+gem 'omniauth-google-oauth2'
+
+gem 'json'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
