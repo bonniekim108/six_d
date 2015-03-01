@@ -13,16 +13,23 @@
       <div class="navbar-inner">
         <div class="container">
           <a href="#" class="brand">Six Degrees</a>
-            
-
-
-    <%= render 'layouts/header' %>
+          <ul class="nav pull-right">
+            <% if logged_in? %>
+              <li><%= link_to 'Friends', friendships_path %></li>
+              <li><%= link_to 'Log out', logout_path %></li>
+            <% else %>
+              <li><%= link_to 'Sign up', signup_path %></li>
+              <li><%= link_to 'Log in', login_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
     <div class="container">
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
       <%= yield %>
-      <%= render 'layouts/footer' %>
     </div>
   </body>
 </html>
