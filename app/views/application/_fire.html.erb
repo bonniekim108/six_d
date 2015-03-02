@@ -8,6 +8,7 @@ var myData = new Firebase('https://sixdegrees.firebaseIO.com'); //"mydata" links
           var n = $('#nameInput').val();
           var t = $('#messageInput').val();
           myData.push({name: n, text: t}); // "push()" allows chat to support a list of messages, not just one message
+          
           $('#messageInput').val(''); // reset msg input
         }
       });
@@ -17,6 +18,7 @@ var myData = new Firebase('https://sixdegrees.firebaseIO.com'); //"mydata" links
   myData.on('child_added', function(snapshot) {  
   // 'child_added' event notifies the arrival of individual messages. 
   var message = snapshot.val(); 
+  console.log(message)
   // snapshot of each chat message's data taken
   displayChatMessage(message.name, message.text)
   });

@@ -8,28 +8,35 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-  <body>
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a href="#" class="brand">Six Degrees</a>
-          <ul class="nav pull-right">
+<body>
+
+  <% flash.each do |type, message| %>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <a href="#" class="close">&times;</a>
+    </div>
+  <% end %>
+
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a href="#" class="brand">Six Degrees</a>
+        <div class="nav pull-right">
+          <ul class="nav nav-tabs">
             <% if logged_in? %>
               <li><%= link_to 'Friends', friendships_path %></li>
-              <li><%= link_to 'Log out', logout_path %></li>
+              <li><%= link_to 'Log out', logout_path %>
             <% else %>
-              <li><%= link_to 'Sign up', signup_path %></li>
-              <li><%= link_to 'Log in', login_path %></li>
+              <li><%= link_to 'Sign up', signup_path %>
+              <li><%= link_to 'Log in', login_path %>
             <% end %>
           </ul>
         </div>
       </div>
     </div>
-    <div class="container">
-      <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
-      <% end %>
-      <%= yield %>
-    </div>
-  </body>
+  </div>
+
+  <div class="container">
+    <%= yield %>
+  </div>
+</body>
 </html>
