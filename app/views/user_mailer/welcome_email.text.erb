@@ -1,8 +1,6 @@
-Welcome to Six Degrees, <%= @user.name %>!
+Welcome to Six Degrees, <%= @user.first_name %>!
 
 You have successfully signed up at http://six-d.herokuapp.com.
-Your username is: <%= @user.login %>.
-
-To login to the site, just follow this link: <%= @url %>.
-
-Thanks for joining and have a great day!
+Your username is: <%= @user.username %>.
+Click on the link to activate your account:
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>

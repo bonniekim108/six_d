@@ -4,14 +4,14 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Welcome to Six Degrees, <%= @user.name %>!</h1>
+    <h1>Welcome to Six Degrees, <%= @user.first_name %>!</h1>
     <p>
       You have successfully signed up at http://six-d.herokuapp.com.
-      Your username is: <%= @user.login %>.<br>
+      Your username is: <%= @user.username %>.<br>
     </p>
     <p>
-      To log in to the site, just follow this link: <%= @url %>.
+      Click on the link to activate your account:
     </p>
-    <p>Thanks for joining and have a great day!</p>
+    <%= link_to "Activate", edit_account_activation_url(@user.activation_token, email: @user.email) %>
   </body>
 </html>
