@@ -1,0 +1,11 @@
+<div class="profile-header">
+  <h2><%= @user.full_name %></h2>
+</div>
+
+<% if @invitees %>
+  <% @invitees.each do |invitee| %>
+    <div class="invitee_list">
+      <%= invitee.full_name %>
+    </div>
+  <% end %>
+<% end %>
