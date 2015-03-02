@@ -47,9 +47,9 @@ RSpec.describe User, type: :model do
     end
   end
 
-  it "is invalid if a user tries to sign up with an email address that already exists in the database, regardless of capitalization" do
-    user = create(:user, email: "email@example.com")
-    new_user= build(:user, email: "Email@example.com")
+  it "is invalid with a duplicate email regardless of capitalization" do
+    user = create(:user, email: 'bradpitt@example.com')
+    new_user = build(:user, email: "Bradpitt@example.com")
     expect(new_user).to be_invalid
   end
 
