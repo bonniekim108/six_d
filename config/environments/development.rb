@@ -40,6 +40,11 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   #mandrill and figaro added to separate api keys and username 
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :test
+  host = 'example.com'
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
   ActionMailer::Base.smtp_settings = {
       :port =>           '587',
       :address =>        'smtp.mandrillapp.com',
