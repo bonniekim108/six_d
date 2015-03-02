@@ -1,0 +1,7 @@
+<li id="notification-<%= notification.id %>">
+  <span class="user"><%= link_to notification.user.fullname, notification.user %></span>
+  <span class="content"><%= notification.content %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(notification.created_at) %> ago.
+  </span>
+</li>
