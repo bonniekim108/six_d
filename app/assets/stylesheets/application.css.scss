@@ -41,10 +41,45 @@ body {
 
 .firebase-chat {
   padding: 40px;
+  background-color: #EEE;
+  border-radius: 1em;
+  height: 32em;
+  overflow: auto;
 
 }
 
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
 
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
+}
+
+/* Users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 15px 0;
+    border-bottom: 1px solid black;
+  }
+}
+
+#messagesDiv {
+  font-size: 40px;
+  div {
+    em { color: blue;}
+  }
+}
 
 
 
