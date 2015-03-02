@@ -5,10 +5,16 @@
     <section class="user_info">
       <p>Hello, <%= @user.username%>!</p>
       <span>Your friends:</span>
-        <unless @invitees.blank? %>
+        <% unless @invitees.blank? %>
         <% @invitees.each do |invitee| %>
-      </span>
     </section>
   </aside>
+  <div class="col-md-8">
+    <% if @user.notifications.any? %>
+      <h3>Notifications(<%= @user.notifications.count %>)</h3>
+      <ol class="notifications">
+        <%= render @notifications %>
+      </ol>
+    <% end %>
+  </div>
 </div>
-<% end %>
