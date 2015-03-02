@@ -15,3 +15,8 @@ users = User.create([
 
   ])
 
+users = User.order(:created_at).take(4)
+10.times do
+  content = Faker::Lorem.sentence(4)
+  users.each { |user| user.notifications.create!(content: content) }
+end
