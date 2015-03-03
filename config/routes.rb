@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :notifications, only: [:create, :destroy]
   resources :messages
-  
+  get '/deletemsg' => 'messages#destroy', as: :msgdelete
 
   #   root to: 'sessions#new'
   #   resources :sessions, only: :index

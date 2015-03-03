@@ -32,6 +32,7 @@
     <%= m.sender %>
     <%= m.subject %>
     <%= m.body %> 
+    <%= link_to "delete", "/deletemsg?param1=#{m.id}&param2=#{@user.id}" %>
     <h3> Reply </h3>
     <%= form_for Message.new() do |f| %>
       <%= f.text_field :sender, :value => 'currentuser goes here' %>
