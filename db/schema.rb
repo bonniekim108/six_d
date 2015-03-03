@@ -17,9 +17,13 @@ ActiveRecord::Schema.define(version: 20150303014548) do
   enable_extension "plpgsql"
 
   create_table "friendships", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "invitee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "friendships", ["user_id", "invitee_id"], name: "index_friendships_on_user_id_and_invitee_id", using: :btree
 
   create_table "invitations", force: :cascade do |t|
     t.string   "invited_by"
