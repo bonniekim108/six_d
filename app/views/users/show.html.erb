@@ -21,6 +21,7 @@
 </div>
 <%= form_for Message.new() do |f| %>
   <%= f.text_field :sender, :value => 'when current user is available put user name here'  %>
+  Current user.id goes here<%= f.text_field :senderid , :value=> '' %>
   <%= f.text_field :subject, :value => '' %>
   <%= f.text_field :body, :value => '' %>
   <%= f.text_field :user_id, :value => @user.id %>
@@ -33,9 +34,13 @@
     <%= m.body %> 
     <h3> Reply </h3>
     <%= form_for Message.new() do |f| %>
-      <%= f.sender %>
-      <%= f.text_field :subject => "Re: #{m.subject}" %>
-      <%= f.text_field :body, :value ='' %>
+      <%= f.text_field :sender, :value => 'currentuser goes here' %>
+  Current user.id goes here<%= f.text_field :senderid , :value=> '' %>
+      <%= f.text_field :user_id, :value => m.senderid %>
+      <%= f.text_field :subject ,  :value => "Re: #{m.subject}" %>
+      <%= f.text_field :body, :value =>'' %>
+      <%= f.submit 'Reply' %>
+    <% end %>
 
   <% end %>
 <% end %>
