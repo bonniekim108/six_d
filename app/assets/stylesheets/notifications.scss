@@ -1,3 +1,31 @@
 // Place all the styles related to the Notifications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.notifications {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 15px 0;
+    border-top: 1px dashed #e8e8e8;
+  }
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .content {
+    display: block;
+    margin-left: 60px;
+  }
+}
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 60px;
+  }
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
