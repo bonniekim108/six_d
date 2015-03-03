@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  get 'profiles/show'
+  # get 'profiles/show'
 
   get 'static_pages/home'
 
@@ -16,9 +16,12 @@ Rails.application.routes.draw do
 
   # GmailAlerts::Application.routes.draw do
 
-  get '/:id', to: 'profiles#show', as: 'profile'
+  # get '/:id', to: 'profiles#show', as: 'profile'
+  resources :users
+  resources :profiles
   resources :friendships
   resources :account_activations, only: [:edit]
+  resources :notifications, only: [:create, :destroy]
   
 
   #   root to: 'sessions#new'
