@@ -19,13 +19,13 @@ class UsersController < ApplicationController
     def create
       @user = User.new(users_params)
 
-      # if @user.save
-      #   UserMailer.welcome_email(@user).deliver_now
-      #   flash[:info] = "Please check your email to activate your account."
-      #   redirect_to root_url
-      # else
-      #   render :new
-      # end
+       if @user.save
+         #UserMailer.welcome_email(@user).deliver_now
+         #flash[:info] = "Please check your email to activate your account."
+         redirect_to root_url
+       else
+         render :new
+       end
     end
 
     def edit
