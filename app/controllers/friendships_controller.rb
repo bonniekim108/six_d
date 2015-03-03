@@ -1,7 +1,7 @@
 class FriendshipsController < ApplicationController
 
   def new
-    if params[:invitee_id]
+    if params[:invitee_id] #if friend id parameter is there, find a friend based on that id and assign it to variable friend
       @invitee = User.where(profile_name: params[:invitee_id]).first
       @friendship = current_user.friendships.new(invitee: @invitee)
     else
