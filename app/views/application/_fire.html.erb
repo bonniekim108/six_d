@@ -18,7 +18,7 @@ var myData = new Firebase('https://sixdegrees.firebaseIO.com'); //"mydata" links
   myData.on('child_added', function(snapshot) {  
   // 'child_added' event notifies the arrival of individual messages. 
   var message = snapshot.val(); 
-  console.log(message)
+  // console.log(message)
   // snapshot of each chat message's data taken
   displayChatMessage(message.name, message.text)
   });

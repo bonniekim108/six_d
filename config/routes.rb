@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
 
-  # get 'profiles/show'
 
   get 'static_pages/home'
 
@@ -14,9 +13,8 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
 
-  # GmailAlerts::Application.routes.draw do
-
-  # get '/:id', to: 'profiles#show', as: 'profile'
+  # allows this to be referred to as profile path in views
+  get '/:id', to: 'profiles#show', as: 'profile'
   resources :users
   resources :profiles
   resources :friendships

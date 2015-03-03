@@ -14,13 +14,13 @@ class FriendshipsController < ApplicationController
       @invitee = User.where(profile_name: params[:invitee_id]).first
       @friendship = current_user.friendships.new(invitee: @invitee)
       if @friendship.save
-        flash[:success] = "You are now friends with #{@friend.full_name}"
+        flash[:success] = "You are now friends with #{@invitee.full_name}."
       else
-        flash[:error] = "There is an error."
+        flash[:error] = "Error"
       end
       redirect_to profile_path(@invitee)
     else
-      flash[:error] = "Friend needed"
+      flash[:error] = "You need to add a friend."
       redirect_to root_path
     end
   end
