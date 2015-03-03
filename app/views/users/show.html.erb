@@ -31,5 +31,11 @@
     <%= m.sender %>
     <%= m.subject %>
     <%= m.body %> 
+    <h3> Reply </h3>
+    <%= form_for Message.new() do |f| %>
+      <%= f.sender %>
+      <%= f.text_field :subject => "Re: #{m.subject}" %>
+      <%= f.text_field :body, :value ='' %>
+
   <% end %>
 <% end %>
