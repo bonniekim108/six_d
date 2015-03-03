@@ -1,6 +1,8 @@
 class StaticPagesController < ApplicationController
   def home
-    @notification = current_user.notifications.build if logged_in? 
+    if logged_in?
+      @notification = current_user.notifications.build
+      @feed_items = current_user.feed(page:params[:page])
+    end
   end
-  # @micropost variable defined only if there is a current logged in user
 end

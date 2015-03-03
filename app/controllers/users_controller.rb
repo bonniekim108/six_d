@@ -52,7 +52,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        #Tell the UserMailer to send a welcome email after save
+        #Tell the UserMailer to send a welcome email after user is created
         UserMailer.welcome_email(@user).deliver_now
 
         format.html { redirect_to@user, notice: 'User was successfully created.' }
@@ -81,17 +81,8 @@ class UsersController < ApplicationController
       redirect_to(root_url) unless @user == current_user
     end
 
-
-    # Confirms that user is logged in. 
-    def logged_in_user
-      unless logged_in?
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
-    end
-
   end
-end
+
 
 
 
