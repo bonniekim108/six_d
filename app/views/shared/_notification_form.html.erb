@@ -1,0 +1,7 @@
+<%= form_for(@notification) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "Taking a trip or moving? Let your friends know!" %>
+  </div>
+  <%= f.submit "Post notification", class: "btn btn-primary" %>
+<% end %>

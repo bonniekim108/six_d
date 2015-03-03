@@ -1,0 +1,4 @@
+<h1><%= current_user.fullname %></h1>
+<span><%= link_to "view my profile", current_user %></span>
+<span><%= pluralize(current_user.notifications.count, "notification") %></span>
+<!-- pluralize method differentiates between 1 notification, 2 notifications -->
