@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ProfilesController, type: :controller do
 
   it "should show the show page" do
-    get :show, id: users(:user).profile_name
+    get :show, id: user(:user).profile_name
     assert_response :success
     assert_template 'profiles/show'
   end
