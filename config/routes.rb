@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
 
+  get 'messages/new'
+
+  get 'messages/create'
+
   # get 'profiles/show'
 
   get 'static_pages/home'
@@ -15,6 +19,10 @@ Rails.application.routes.draw do
   post '/users' => 'users#create'
 
   # GmailAlerts::Application.routes.draw do
+
+  get 'messages/new'
+
+  get 'messages/create'
 
   # get '/:id', to: 'profiles#show', as: 'profile'
   resources :users

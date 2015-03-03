@@ -26,3 +26,10 @@
   <%= f.text_field :user_id, :value => @user.id %>
   <%= f.submit %>
 <% end %>
+<% if @user.messages %>
+  <% @user.messages.each do |m| %>
+    <%= m.sender %>
+    <%= m.subject %>
+    <%= m.body %> 
+  <% end %>
+<% end %>
