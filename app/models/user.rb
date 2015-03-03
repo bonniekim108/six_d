@@ -1,9 +1,14 @@
 class User < ActiveRecord::Base
 
 
+
   attr_accessor :remember_token, :activation_token
   before_save :downcase_email
   before_create :create_activation_digest
+
+
+  has_many :messages
+  before_save { self.email = email.downcase }
 
   has_secure_password 
   validates :password, length: { minimum: 5 }, allow_nil: true

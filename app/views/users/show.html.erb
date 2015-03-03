@@ -1,20 +1,47 @@
 
-<%= @user.full_name %>
+<%#<%= @user.full_name %>%>
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
       <p>Hello, <%= @user.username%>!</p>
       <span>Your friends:</span>
-        <% unless @invitees.blank? %>
-        <% @invitees.each do |invitee| %>
+        <%#<% unless @invitees.blank? %>%>
+        <%#<% @invitees.each do |invitee| %>%>
+        <%#<% end %>%>
     </section>
   </aside>
   <div class="col-md-8">
-    <% if @user.notifications.any? %>
-      <h3>Notifications(<%= @user.notifications.count %>)</h3>
-      <ol class="notifications">
-        <%= render @notifications %>
-      </ol>
-    <% end %>
+   <%# <% if @user.notifications.any? <]%>
+      <%#<h3>Notifications(<%= @user.notifications.count %>)</h3>%>
+      <%#<ol class="notifications">%>
+        <%#<%= render @notifications %>%>
+      <%#</ol>%>
+    <%#<% end <]%>
   </div>
 </div>
+<%= form_for Message.new() do |f| %>
+  <%= f.text_field :sender, :value => 'when current user is available put user name here'  %>
+  Current user.id goes here<%= f.text_field :senderid , :value=> '' %>
+  <%= f.text_field :subject, :value => '' %>
+  <%= f.text_field :body, :value => '' %>
+  <%= f.text_field :user_id, :value => @user.id %>
+  <%= f.submit %>
+<% end %>
+<% if @user.messages %>
+  <% @user.messages.each do |m| %>
+    <%= m.sender %>
+    <%= m.subject %>
+    <%= m.body %> 
+    <%= link_to "delete", "/deletemsg?param1=#{m.id}&param2=#{@user.id}" %>
+    <h3> Reply </h3>
+    <%= form_for Message.new() do |f| %>
+      <%= f.text_field :sender, :value => 'currentuser goes here' %>
+  Current user.id goes here<%= f.text_field :senderid , :value=> '' %>
+      <%= f.text_field :user_id, :value => m.senderid %>
+      <%= f.text_field :subject ,  :value => "Re: #{m.subject}" %>
+      <%= f.text_field :body, :value =>'' %>
+      <%= f.submit 'Reply' %>
+    <% end %>
+
+  <% end %>
+<% end %>
