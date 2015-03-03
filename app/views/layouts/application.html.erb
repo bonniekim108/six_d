@@ -16,25 +16,39 @@
     </div>
   <% end %>
 
-  <div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
+  <div class="navbar navbar-inverse navbar-fixed-top primaryNav previewNav" role="navigation">
+    <a href="#" class="brand">Six Degrees</a>
+    <div class="navbar-top" id="header-nav">
       <div class="container">
-        <a href="#" class="brand">Six Degrees</a>
-        <div class="nav pull-right">
-          <ul class="nav nav-tabs">
-            <% if logged_in? %>
-              <li><%= link_to 'Friends', friendships_path %></li>
-              <li><%= link_to 'Log out', logout_path %>
-            <% else %>
-              <li><%= link_to 'Sign up', signup_path %>
-              <li><%= link_to 'Log in', login_path %>
-            <% end %>
-          </ul>
+        <div class="row">
+          <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
+            <div class="pull-left">
+              <ul class="user-enu">
+                <li>
+                  <a href="contact.html">
+                    <span class="hidden-xs">CONTACT US</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-6.col-sm-6.col-xs-6.col-md-6.no-margin.no-padding">
+            <div class="pull-right">
+              <ul class="right-user-menu">  
+                <% if logged_in? %>
+                  <li><%= link_to 'Friends', friendships_path %></li>
+                  <li><%= link_to 'Log out', logout_path %></li>
+                <% else %>
+                  <li><%= link_to 'Sign up', signup_path %></li>
+                  <li><%= link_to 'Log in', login_path %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
   <div class="container">
     <%= yield %>
   </div>
