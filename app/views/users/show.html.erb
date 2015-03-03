@@ -20,7 +20,7 @@
   </div>
 </div>
 <%= form_for Message.new() do |f| %>
-  <%= f.text_field :sender, :value => current_user.username %>
+  <%= f.text_field :sender, :value => 'when current user is available put user name here'  %>
   <%= f.text_field :subject, :value => '' %>
   <%= f.text_field :body, :value => '' %>
   <%= f.text_field :user_id, :value => @user.id %>

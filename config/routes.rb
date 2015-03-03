@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :friendships
   resources :account_activations, only: [:edit]
   resources :notifications, only: [:create, :destroy]
+  resources :messages
   
 
   #   root to: 'sessions#new'
