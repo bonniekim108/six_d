@@ -2,8 +2,6 @@ source 'https://rubygems.org'
 
 ruby '2.2.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'carrierwave'
-gem 'mini_magick'
 
 gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record
@@ -23,10 +21,6 @@ gem 'bootstrap-sass'
 gem 'firebase'
 
 gem 'figaro'
-
-gem 'omniauth', '~> 1.2.2'
-
-gem 'omniauth-google-oauth2'
 
 gem 'json'
 
@@ -49,6 +43,10 @@ gem 'rails_12factor', group: :production
 gem 'angular-rails-templates'
 
 gem 'faker', "~> 1.4.3"
+
+gem 'carrierwave'
+gem 'fog'
+gem 'mini_magick'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
