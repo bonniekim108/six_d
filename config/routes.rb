@@ -4,9 +4,8 @@ Rails.application.routes.draw do
   # get 'profiles/show'
 
 
-  get 'static_pages/home'
+  root 'static_pages/home'
 
-  # these are the user api routes
   root 'application#index'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'

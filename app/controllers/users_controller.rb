@@ -19,7 +19,14 @@ class UsersController < ApplicationController
     def create
       @user = User.new(users_params)
 
+      respond_to do |format|
       if @user.save
+        #Tell the UserMailer to send a welcome email after user is created
+        UserMailer.welcome_email(@user).deliver_now
+
+        format.html { redirect_to@user, notice: 'User was successfully created.' }
+        format.json { render json: @user, status: :created, location: @user }
+
         #check for invites
         invites = Invite.where(invitee_email: @user.email)
         # for each invite where the invitee email equals the new user's email
@@ -28,13 +35,15 @@ class UsersController < ApplicationController
           Friendship.create(from_id: @user.id, to_id: invite.user_id)
           #friendship from inviter to user (the invitee)
           Friendship.create(from_id: invite.user_id, to_id: @user.id)
-        end
 
-        redirect_to    
-       else
-         render :new
-       end
+          redirect_to  
+      else
+
+        format.html { render action: 'new' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
     end
+
 
     def edit
       @user = User.find(params[:id])
@@ -58,18 +67,6 @@ class UsersController < ApplicationController
       redirect_to(root_url) unless current_user.admin?
     end
 
-    respond_to do |format|
-      if @user.save
-        #Tell the UserMailer to send a welcome email after user is created
-        UserMailer.welcome_email(@user).deliver_now
-
-        format.html { redirect_to@user, notice: 'User was successfully created.' }
-        format.json { render json: @user, status: :created, location: @user }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
 
     def welcome_email(user)
       @user = user

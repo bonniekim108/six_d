@@ -18,8 +18,7 @@ class User < ActiveRecord::Base
 
   has_many :sent_invitations
   belongs_to :invitation
-  has_many :invitees, through: :friendships
-  has_many :friendships
+  has_many :friendships, through: :invitees
   has_many :notifications, dependent: :destroy # a user's notifications are destroyed along with user
 
   # Returns hash digest of string
