@@ -11,10 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150303191132) do
+ActiveRecord::Schema.define(version: 20150304202848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "documents", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "user_id"
@@ -27,10 +32,13 @@ ActiveRecord::Schema.define(version: 20150303191132) do
 
   create_table "invitations", force: :cascade do |t|
     t.string   "invited_by"
-    t.string   "email"
+    t.string   "invitee_full_name"
     t.datetime "sent_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "user_email"
+    t.string   "invitee_email"
+    t.string   "user_full_name"
   end
 
   create_table "invitees", force: :cascade do |t|

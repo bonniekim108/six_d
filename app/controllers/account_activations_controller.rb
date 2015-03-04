@@ -7,7 +7,6 @@ class AccountActivationsController < ApplicationController
       log_in user
       redirect_to user
     else
-      flash[:danger] = "Invalid link."
       redirect_to root_url
     end
   end

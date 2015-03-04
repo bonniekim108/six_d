@@ -2,9 +2,6 @@ Rails.application.routes.draw do
 
 
   root 'application#index'
-
-  # root 'static_pages/home'
-
   
   get '/login' => 'sessions#new', as: :login
   post '/login' => 'sessions#create'
@@ -14,7 +11,7 @@ Rails.application.routes.draw do
   post '/users' => 'users#create'
 
   # allows this to be referred to as profile path in views
-  get '/:id', to: 'profiles#show', as: 'profile'
+  get 'profile/:id', to: 'profiles#show', as: 'profile'
 
   get 'messages/new'
 
@@ -27,6 +24,5 @@ Rails.application.routes.draw do
   resources :notifications, only: [:create, :destroy]
   resources :messages
   get '/deletemsg' => 'messages#destroy', as: :msgdelete
-
 
 end

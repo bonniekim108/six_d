@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html ng-app>
+<html>
 <head>
+  <link href='http://fonts.googleapis.com/css?family=Stalemate' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
   <title>SixD</title>
   <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
@@ -10,48 +13,54 @@
 </head>
 <body>
 
-  <% flash.each do |type, message| %>
-    <div class="alert alert-<%= message_type %>"><%= message %></div>
-      <a href="#" class="close">&times;</a>
+<!-- Fixed navbar -->
+<div class="navbar navbar-inverse navbar-fixed-top" style="background: white !important" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span> <!-- sr hides information used for screen readers -->
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="small-logo-container">
+        <a class="small-logo" href="#">Six Degrees</a>
+      </div>
     </div>
-  <% end %>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <% if logged_in? %>
+          <li><%= link_to 'Friends', friendships_path %></li>
+          <li><%= link_to 'Log out', logout_path %></li>
+        <% else %>
+          <li><%= link_to 'Sign up', signup_path %></li>
+          <li><%= link_to 'Log in', login_path %></li>
+        <% end %>         
+      </ul>
+    </div>
+  </div>
+</div>
+<%= params %>
 
-  <div class="navbar navbar-inverse navbar-fixed-top primaryNav previewNav" role="navigation">
-    <a href="#" class="brand">Six Degrees</a>
-    <div class="navbar-top" id="header-nav">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
-            <div class="pull-left">
-              <ul class="user-enu">
-                <li>
-                  <a href="contact.html">
-                    <span class="hidden-xs">CONTACT US</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-lg-6.col-sm-6.col-xs-6.col-md-6.no-margin.no-padding">
-            <div class="pull-right">
-              <ul class="right-user-menu">  
-                <% if logged_in? %>
-                  <li><%= link_to 'Friends', friendships_path %></li>
-                  <li><%= link_to 'Log out', logout_path %></li>
-                <% else %>
-                  <li><%= link_to 'Sign up', signup_path %></li>
-                  <li><%= link_to 'Log in', login_path %></li>
-                <% end %>
-              </ul>
-            </div>
-          </div>
-        </div>
+<div class="container-fluid big-logo-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 big-logo-container">
+        <h1 class="big-logo">Six Degrees</h1>
       </div>
     </div>
   </div>
-  <div class="container">
-    <%= yield %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-5 col-md-6 col-sm-8">
+      <h2>blah blah background pic</h2>
+    </div>
   </div>
-  <%= params %>
+</div>
+
+<%= yield %>
+
 </body>
 </html>

@@ -83,6 +83,77 @@ body {
   }
 }
 
+$navbar-height: 40px;
+$big-logo-padding: 15px; 
+$small-logo-padding: 2.5px; 
+
+
+// Navbar styling
+
+.navbar-inverse {
+  background: transparent;
+  border-bottom: none;
+}
+.navbar-inverse .navbar-toggle {
+  border: 1px transparent;
+  border-color: transparent;
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+   border-color: transparent;
+  @media (max-width: 767px) {
+    background: transparent;
+  }
+}
+.navbar-inverse .navbar-nav > li > a {
+color: rgba(57, 177, 198, 1);
+  
+
+}
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+color: black;
+
+}
+ul.nav {
+}
+
+// Logo styling
+.small-logo-container {
+    padding-top: $navbar-height;
+    height: $navbar-height;
+    overflow: hidden;
+  }
+
+.small-logo {
+  color: white;
+  font-size: 2em;
+  padding-bottom: $small-logo-padding;
+}
+
+// big logo styling
+.big-logo-row {
+  background: rgba(31, 210, 97, 1);
+  
+  .big-logo-container {
+    padding-top: $navbar-height;
+    font-family: 'Pacifico', cursive;
+    // font-family: 'Stalemate', cursive;
+  }
+  
+  h1 {
+    font-size:3.0em;
+    margin:0;
+    padding:0 0 $big-logo-padding 0;
+    
+    @media (min-width: 400px) { font-size: 4.5em; }
+    @media (min-width: 440px) { font-size: 5.5em; }
+    @media (min-width: 500px) { font-size: 6.5em; }
+    @media (min-width: 630px) { font-size: 7.5em;  }
+    @media (min-width: 768px) { font-size: 9em; padding-bottom: $big-logo-padding * 2; }
+    @media (min-width: 1200px) { font-size: 12em; }
+  }
+}
+
 
 
 

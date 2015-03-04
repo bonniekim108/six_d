@@ -20,24 +20,26 @@ class UsersController < ApplicationController
       @user = User.new(users_params)
 
       respond_to do |format|
-      if @user.save
-        #Tell the UserMailer to send a welcome email after user is created
-        UserMailer.welcome_email(@user).deliver_now
+        if @user.save
+          #Tell the UserMailer to send a welcome email after user is created
+          UserMailer.welcome_email(@user).deliver_now
 
-        format.html { redirect_to@user, notice: 'User was successfully created.' }
-        format.json { render json: @user, status: :created, location: @user }
+          format.html { redirect_to @user, notice: 'User was successfully created.' }
+          format.json { render json: @user, status: :created, location: @user }
 
-        #check for invites
-        invites = Invite.where(invitee_email: @user.email)
-        # for each invite where the invitee email equals the new user's email
-        invites.each do |invite|
-          #friendship from user to inviter created
-          Friendship.create(from_id: @user.id, to_id: invite.user_id)
-          #friendship from inviter to user (the invitee)
-          Friendship.create(from_id: invite.user_id, to_id: @user.id)
+          #check for invites
+          invitations = Invitation.where(invitee_email: @user.email)
+          # for each invite where the invitee email equals the new user's email
+          invitations.each do |invitation|
+            #friendship from invitee to user created
+            Friendship.create(from_id: @user.id, to_id: invitation.user_id)
+            #friendship from user to invitee
+            Friendship.create(from_id: invitation.user_id, to_id: @user.id)
+          end
 
-          redirect_to  
-      else
+        else
+          redirect_to root_url
+        end
 
         format.html { render action: 'new' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -85,8 +87,8 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       redirect_to(root_url) unless @user == current_user
     end
-
   end
+
 
 
 

@@ -9,8 +9,7 @@ class SessionsController < ApplicationController
       if user.activated? # lets users log in only if they are activated. 
         log_in user
         params[:session][:remember_me] == '1'? remember(user) :forget(user)
-        redirect_back_or user
-      else
+        redirect_to profile_path
         message = "Account not activated. Check email for activation link."
         flash[:warning] = message
         redirect_to root_url
