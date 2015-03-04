@@ -1,30 +1,24 @@
 Rails.application.routes.draw do
 
 
-  # get 'profiles/show'
-
-
-  root 'static_pages/home'
-
   root 'application#index'
-  get '/login' => 'sessions#new'
+
+  # root 'static_pages/home'
+
+  
+  get '/login' => 'sessions#new', as: :login
   post '/login' => 'sessions#create'
-  get '/logout' => 'sessions#destroy'
+  get '/logout' => 'sessions#destroy', as: :logout
 
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
 
-
   # allows this to be referred to as profile path in views
   get '/:id', to: 'profiles#show', as: 'profile'
-
-  # GmailAlerts::Application.routes.draw do
 
   get 'messages/new'
 
   get 'messages/create'
-
-  # get '/:id', to: 'profiles#show', as: 'profile'
 
   resources :users
   resources :profiles
@@ -34,9 +28,5 @@ Rails.application.routes.draw do
   resources :messages
   get '/deletemsg' => 'messages#destroy', as: :msgdelete
 
-  #   root to: 'sessions#new'
-  #   resources :sessions, only: :index
-  #   get '/auth/:provider/callback' => 'sessions#create'
-  # end
 
 end
