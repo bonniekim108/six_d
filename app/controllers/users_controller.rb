@@ -19,10 +19,18 @@ class UsersController < ApplicationController
     def create
       @user = User.new(users_params)
 
-       if @user.save
-         #UserMailer.welcome_email(@user).deliver_now
-         #flash[:info] = "Please check your email to activate your account."
-         redirect_to root_url
+      if @user.save
+        #check for invites
+        invites = Invite.where(invitee_email: @user.email)
+        # for each invite where the invitee email equals the new user's email
+        invites.each do |invite|
+          #friendship from user to inviter created
+          Friendship.create(from_id: @user.id, to_id: invite.user_id)
+          #friendship from inviter to user (the invitee)
+          Friendship.create(from_id: invite.user_id, to_id: @user.id)
+        end
+
+        redirect_to    
        else
          render :new
        end
@@ -74,7 +82,7 @@ class UsersController < ApplicationController
   
     def users_params
       params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation)  
-    end
+    end 
 
     def correct_user
       @user = User.find(params[:id])
