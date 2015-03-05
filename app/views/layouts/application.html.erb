@@ -4,66 +4,15 @@
   <link href='http://fonts.googleapis.com/css?family=Stalemate' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
-  <title>SixD</title>
   <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<!-- Fixed navbar -->
-<div class="navbar navbar-inverse navbar-fixed-top" style="background: white !important" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span> <!-- sr hides information used for screen readers -->
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <div class="small-logo-container">
-        <a class="small-logo" href="#">Six Degrees</a>
-      </div>
-    </div>
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <% if logged_in? %>
-          <li><%= link_to 'Friends', friendships_path %></li>
-          <li><%= link_to 'Log out', logout_path %></li>
-        <% else %>
-          <li><%= link_to 'Sign up', signup_path %></li>
-          <li><%= link_to 'Log in', login_path %></li>
-        <% end %>         
-      </ul>
-    </div>
-  </div>
-</div>
-<%= params %>
-
-<div class="container-fluid big-logo-row">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 big-logo-container">
-        <h1 class="big-logo">Six Degrees</h1>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-lg-5 col-md-6 col-sm-8">
-      <h2>blah blah background pic</h2>
-      <% if current_user %>
-      <%= current_user.username %>
-      <% else %>
-      no currrrrent_user 
-      <% end %>
-    </div>
-  </div>
-</div>
 
 <%= yield %>
 

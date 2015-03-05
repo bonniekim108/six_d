@@ -1,7 +1,86 @@
+<!-- Fixed navbar -->
+<div class="navbar navbar-inverse navbar-fixed-top" style="background: white !important" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse">
+        <span class="sr-only">Toggle navigation</span> <!-- sr hides information used for screen readers -->
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="small-logo-container">
+        <a class="small-logo" href="#">Six Degrees</a>
+      </div>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <% if logged_in? %>
+          <li><%= link_to 'Friends', friendships_path %></li>
+          <li><%= link_to 'Log out', logout_path %></li>
+        <% else %>
+          <li><%= link_to 'Sign up', signup_path %></li>
+          <li><%= link_to 'Log in', login_path %></li>
+        <% end %>         
+      </ul>
+    </div>
+  </div>
+</div>
 
-<body>
-  <div id='messagesDiv'></div>
-    <input type='text' id='nameInput' placeholder='Name'>
-    <input type='text' id='messageInput' placeholder='Message'>
-    <%= render 'fire' %>
-</body>
+<div class="container-fluid big-logo-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 big-logo-container">
+        <h1 class="big-logo">Six Degrees</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-5 col-md-6 col-sm-8">
+      <h2>blah blah background pic</h2>
+      <% if current_user %>
+      <%= current_user.username %>
+      <% else %>
+      <p>No user</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script>
+$(window).scroll(function() { 
+
+  var navbarColor = "62,195,246";//color attr for rgba
+  var smallLogoHeight = $('.small-logo').height();
+  var bigLogoHeight = $('.big-logo').height();
+  var navbarHeight = $('.navbar').height(); 
+  
+  var smallLogoEndPos = 0;
+  var smallSpeed = (smallLogoHeight / bigLogoHeight);
+  
+  var ySmall = ($(window).scrollTop() * smallSpeed); 
+  
+  var smallPadding = navbarHeight - ySmall;
+  if (smallPadding > navbarHeight) { smallPadding = navbarHeight; }
+  if (smallPadding < smallLogoEndPos) { smallPadding = smallLogoEndPos; }
+  if (smallPadding < 0) { smallPadding = 0; }
+  
+  $('.small-logo-container ').css({ "padding-top": smallPadding});
+  
+  var navOpacity = ySmall / smallLogoHeight; 
+  if  (navOpacity > 1) { navOpacity = 1; }
+  if (navOpacity < 0 ) { navOpacity = 0; }
+  var navBackColor = 'rgba(' + navbarColor + ',' + navOpacity + ')';
+  $('.navbar').css({"background-color": navBackColor});
+  
+  var shadowOpacity = navOpacity * 0.4;
+  if ( ySmall > 1) {
+    $('.navbar').css({"box-shadow": "0 2px 3px rgba(0,0,0," + shadowOpacity + ")"});
+  } else {
+    $('.navbar').css({"box-shadow": "none"});
+  } 
+  
+});
+</script>

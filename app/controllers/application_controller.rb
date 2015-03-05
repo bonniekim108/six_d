@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-
+  def index 
+  end
   protect_from_forgery with: :exception
   include SessionsHelper
 
@@ -7,15 +8,15 @@ class ApplicationController < ActionController::Base
 
    # Confirms that user is logged in. 
   def logged_in_user
-    unless logged_in?
-      redirect_to login_url
-    end
-  end
+     unless logged_in?
+       redirect_to login_url
+     end
+   end
 
-  def logged_in? 
-    current_user
-  end
-  helper_method :logged_in?
+   def logged_in? 
+     current_user
+   end
+   helper_method :logged_in?
 
   def current_user
     if session[:user_id]
