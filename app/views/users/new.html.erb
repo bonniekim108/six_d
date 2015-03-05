@@ -1,30 +1,30 @@
-<% provide(:title, 'Sign up') %>
-<h2>Sign Up</h2>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+
+<div class="signup-row">
+<!--   <div class="col-sm-3 col-md-2"></div> -->
+  <div class="col-md-4 col-md-offset-4">
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
      <!--   f.object creates object variable  -->
-      <%= f.label :first_name %>
+      <%= f.label :first_name, "FIRST NAME" %>
       <%= f.text_field :first_name, class: 'form-control' %>
-      <br>
-      <%= f.label :last_name %> 
+
+      <%= f.label :last_name, "LAST NAME" %> 
       <%= f.text_field :last_name, class: 'form-control' %>'
-      <br>
-      <%= f.label :username %>
+
+      <%= f.label :username, "USERNAME" %>
       <%= f.text_field :username, class: 'form-control' %>
-      <br>
-      <%= f.label :email %>
+
+      <%= f.label :email, "EMAIL" %>
       <%= f.text_field :email, class: 'form-control' %>
-      <br>
-      <%= f.label :password %>
+
+      <%= f.label :password, "PASSWORD" %>
       <%= f.password_field :password, class: 'form-control' %>
-      <br>
-      <%= f.label :password_confirmation, "Confirmation" %>
+
+      <%= f.label :password_confirmation, "PASSWORD CONFIRMATION" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
-      <br>
-      <%= f.submit "Sign up", class: "btn btn-primary" %>
+        <br>
+      <%= f.submit "SIGN UP", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
