@@ -22,7 +22,7 @@ class UsersController < ApplicationController
         if @user.save
           #Tell the UserMailer to send a welcome email after user is created
           UserMailer.welcome_email(@user).deliver_now
-
+          session[:user_id] = @user.id
           redirect_to user_path(@user.id)
 
           #check for invites
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
           redirect_to root_url
         end
 
-    end
+      end
 
 
     def edit

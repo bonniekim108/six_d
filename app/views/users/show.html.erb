@@ -1,28 +1,17 @@
 <%= @user.full_name %>
-
+<% if current_user %>
 <%= form_for Message.new() do |f| %>
-  <%= f.text_field :sender, :value => 'when current user is available put user name here'  %>
-  Current user.id goes here<%= f.text_field :senderid , :value=> '' %>
-  <%= f.text_field :subject, :value => '' %>
-  <%= f.text_field :body, :value => '' %>
+<div style='display: none;' >
+  <%= f.text_field :sender, :value => current_user.email  %>
+  <%= f.text_field :senderid , :value=> current_user.id %>
   <%= f.text_field :user_id, :value => @user.id %>
+</div>
+Subject
+  <%= f.text_field :subject, :value => '' %>
+  <br>
+  <br>
+Body
+  <%= f.text_area :body, :value => '' %>
   <%= f.submit %>
 <% end %>
-<% if @user.messages %>
-  <% @user.messages.each do |m| %>
-    <%= m.sender %>
-    <%= m.subject %>
-    <%= m.body %> 
-    <%= link_to "delete", "/deletemsg?param1=#{m.id}&param2=#{@user.id}" %>
-    <h3> Reply </h3>
-    <%= form_for Message.new() do |f| %>
-      <%= f.text_field :sender, :value => 'currentuser goes here' %>
-  Current user.id goes here<%= f.text_field :senderid , :value=> '' %>
-      <%= f.text_field :user_id, :value => m.senderid %>
-      <%= f.text_field :subject ,  :value => "Re: #{m.subject}" %>
-      <%= f.text_field :body, :value =>'' %>
-      <%= f.submit 'Reply' %>
-    <% end %>
-  <% end %>
 <% end %>
-

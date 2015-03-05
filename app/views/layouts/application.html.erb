@@ -56,7 +56,11 @@
   <div class="row">
     <div class="col-lg-5 col-md-6 col-sm-8">
       <h2>blah blah background pic</h2>
+      <% if current_user %>
       <%= current_user.username %>
+      <% else %>
+      no currrrrent_user 
+      <% end %>
     </div>
   </div>
 </div>
