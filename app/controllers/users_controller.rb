@@ -19,13 +19,11 @@ class UsersController < ApplicationController
     def create
       @user = User.new(users_params)
 
-      respond_to do |format|
         if @user.save
           #Tell the UserMailer to send a welcome email after user is created
           UserMailer.welcome_email(@user).deliver_now
-
-          format.html { redirect_to @user, notice: 'User was successfully created.' }
-          format.json { render json: @user, status: :created, location: @user }
+          session[:user_id] = @user.id
+          redirect_to user_path(@user.id)
 
           #check for invites
           invitations = Invitation.where(invitee_email: @user.email)
@@ -41,10 +39,7 @@ class UsersController < ApplicationController
           redirect_to root_url
         end
 
-        format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
-    end
 
 
     def edit
