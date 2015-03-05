@@ -1,0 +1,27 @@
+<%= @messages.each do |m| %>
+  <strong> Send By <%= m.sender %> </strong>
+
+  <br>
+  Subject <%= m.subject %>
+  <br>
+  <br>
+  Body <%= m.body %>
+  <br>
+   <%= link_to "delete", "/deletemsg?param1=#{m.id}" %>
+    <h3> Reply </h3>
+    <%= form_for Message.new() do |f| %>
+    <div style='display: none;' >
+      <%= f.text_field :sender, :value => current_user.email  %>
+      <%= f.text_field :senderid , :value=> current_user.id %>
+      <%= f.text_field :user_id, :value => m.senderid %>
+    </div>
+    Subject
+       <%= f.text_field :subject ,  :value => "Re: #{m.subject}" %>
+       <br>
+    Body
+      <%= f.text_area :body, :value =>'' %>
+      <br>
+      <%= f.submit 'Reply' %>
+    <% end %>
+
+<% end %>

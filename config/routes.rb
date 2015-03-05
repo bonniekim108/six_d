@@ -13,10 +13,6 @@ Rails.application.routes.draw do
   # allows this to be referred to as profile path in views
   get 'profile/:id', to: 'profiles#show', as: 'profile'
 
-  get 'messages/new'
-
-  get 'messages/create'
-
   resources :users
   resources :profiles
   resources :friendships

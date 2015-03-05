@@ -1,4 +1,7 @@
 class MessagesController < ApplicationController
+  def index
+    @messages = current_user.messages
+  end
   def new
     @message = Message.new
   end
@@ -13,6 +16,6 @@ class MessagesController < ApplicationController
   end
    def destroy
       Message.find(params[:param1]).destroy
-      redirect_to user_path(params[:param2]) 
+      redirect_to messages_path 
     end
 end
