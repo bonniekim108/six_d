@@ -1,8 +1,4 @@
-     Simply put, "Six Degrees" is a website where people can connect with friends of friends. Its main users would be people who are relocating
-to another location or taking a trip somewhere, and want a safe way to meet people. Once signed up, people can "friend" other users
-and update notifications on their profile page, letting them know that they're taking a trip or moving to a specific location. Other
-users can reach out to their friends, and introduce the individuals through the website. Once those users are connected, they can
-send messages to one another. This idea was inspired by Facebook and LinkedIn.
+"Six Degrees" is a website where people can connect with friends of friends. Its main users would be people who are relocating to another location or taking a trip somewhere, and want a safe way to meet people. Once signed up, people can "friend" other users and update notifications on their profile page, letting them know that they're taking a trip or moving to a specific location. Other users can reach out to their friends, and introduce the individuals through the website. Once those users are connected, they can send messages to one another. This idea was inspired by Facebook and LinkedIn.
 
 This project was built on Ruby on Rails with a Postgres database. The link to the site is: https://six-d.herokuapp.com.
 
