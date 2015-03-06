@@ -1,28 +1,12 @@
-== README
+     Simply put, "Six Degrees" is a website where people can connect with friends of friends. Its main users would be people who are relocating
+to another location or taking a trip somewhere, and want a safe way to meet people. Once signed up, people can "friend" other users
+and update notifications on their profile page, letting them know that they're taking a trip or moving to a specific location. Other
+users can reach out to their friends, and introduce the individuals through the website. Once those users are connected, they can
+send messages to one another. This idea was inspired by Facebook and LinkedIn.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project was built on Ruby on Rails with a Postgres database. The link to the site is: https://six-d.herokuapp.com.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This is a work in progress.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+
