@@ -1,15 +1,16 @@
 
 
 <div class="login-row">
-    <div class="col-md-4 col-md-offset-4"></div>
-        <%= f.label :username %>
-        <%= f.text_field :username, class: 'form-control' %>     
-        <%= f.label :password %>
-        <%= f.password_field :password, class: 'form-control' %>
-        <%= f.label :remember_me, class: "checkbox inline" do %>
-        <% end %>
-        <%= f.submit "Log in", class: "btn btn-primary" %>
-    <% end %>
-    <%= link_to "Sign up now!", signup_path %>
-  </div>
+    <div class="col-md-4 col-md-offset-4">
+        <%= form_for User.new() do |f| %>
+            <%= f.label :username %>
+            <%= f.text_field :username, class: 'form-control' %>     
+            <%= f.label :password %>
+            <%= f.password_field :password, class: 'form-control' %>
+            <br>
+            <%= f.submit "Log in", class: "btn btn-primary" %>
+            <% end %>
+        <p>Are you a new user? <%= link_to "Sign up now!", signup_path %></p>
+    </div>
 </div>
+
