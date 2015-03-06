@@ -4,6 +4,7 @@ class FriendshipsController < ApplicationController
     @friendship = Friendships.new
   end  
   
+  # if the invitee email matches the email that the user sent, then they automatically become friends. 
   def create
     if params[:invitee_email]
       @friend = User.where(params[:invitee_email])

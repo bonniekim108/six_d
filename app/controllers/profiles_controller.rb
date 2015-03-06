@@ -2,6 +2,7 @@ class ProfilesController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    #if there's a user there, it should show all the invitees belonging to user
     if @user 
       @invitees = @user.invitees.all  
        render actions: :show
