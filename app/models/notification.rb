@@ -1,5 +1,4 @@
 class Notification < ActiveRecord::Base
-  #attr_accessible :content, :user_id, :document_attributes # this part allows us to say status.document
   belongs_to :user
   #belongs_to :document
   #accepts_nested_attributes_for :document
