@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
   before_save :downcase_email
   before_create :create_activation_digest
 
-
   has_many :messages
   before_save { self.email = email.downcase }
 

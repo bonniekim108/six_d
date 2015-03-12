@@ -1,6 +1,6 @@
 <div class="profile-header">
   <h2><%= @user.full_name %></h2>
-  <%= link_to "Ad Friend", new_user_friendship_path(invitee_id: @user) %>
+  <%= link_to "Add Friend", new_user_friendship_path(invitee_id: @user) %>
 </div>
 
 <% if @invitees %>
