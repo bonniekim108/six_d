@@ -143,8 +143,7 @@ ul.nav {
   .big-logo-container {
     padding-top: $navbar-height;
     font-family: 'Signika', sans-serif;
-    color: #4f4d51;
-    opacity: 0.9; 
+    color: #90C5A9;
     left: 140px;
     letter-spacing: -1x;
     
@@ -164,8 +163,15 @@ ul.nav {
   }
 }
 
+h2 {
+  font-size: 25px;
+  color: #EF6D3B;
+  font-weight: 900;
+}
 .about {
-  font-size: 20px;
+  font-size: 14px;
+  color: #EF6D3B;
+  font-weight: bold;
 }
 
 // .item {
