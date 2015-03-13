@@ -16,8 +16,7 @@
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
-          <!-- <li><%= link_to 'FRIENDS', friendships_path %></li> -->
-          <li><%= link_to 'LOG OUT', logout_path %></li>
+          Signed in as <%= current_user.name %> | <li><%= link_to "LOG OUT", logout_path %></li>
         <% else %>
           <li><%= link_to 'SIGN UP', signup_path %></li>
           <li><%= link_to 'LOG IN', login_path %></li>
