@@ -12,7 +12,7 @@ class FriendshipsController < ApplicationController
       if @friendship.save
         flash[:success] = "Congrats! You are now friends."
       else
-        flash[:error] = "There's an issue."
+        flash[:error] = "Oops! There's been a mistake."
         redirect_to profile_path(@friend)
       end
     end
