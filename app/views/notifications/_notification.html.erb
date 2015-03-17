@@ -1,11 +1,11 @@
-<li id="notification-<%= notification.id %>">
+<!-- <li id="notification-<%= notification.id %>">
   <span class="user"><%= link_to notification.user.full_name, notification.user %></span>
   <span class="content">
     <%= notification.content %>
     <%= image_tag notification.picture_url if notification.picture? %> 
-  <!--   image tag helper renders image after it is uploaded -->
+
   </span>
-    <!-- boolean prevents showing image tag when there is no image -->
+
   <span class="timestamp">
     Posted <%= time_ago_in_words(notification.created_at) %> ago.
     <% if current_user?(notification.user) %> 
@@ -13,4 +13,4 @@
                                           data: { confirm: "Are you sure?" } %>
     <% end %>
   </span>
-</li>
+</li> -->
