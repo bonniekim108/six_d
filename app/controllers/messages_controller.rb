@@ -5,9 +5,9 @@ class MessagesController < ApplicationController
   def new
     @message = Message.new
   end
-
   def create
     @message = Message.new(params.require(:message).permit(:sender, :user_id, :subject, :body, :senderid))
+    @message.sender = current_user.first_name
     if @message.save 
       redirect_to user_path(@message.user_id)
     else
