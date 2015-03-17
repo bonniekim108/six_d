@@ -1,17 +1,29 @@
-<%= @user.full_name %>
-<% if current_user %>
-<%= form_for Message.new() do |f| %>
-<div style='display: none;' >
-  <%= f.text_field :sender, :value => current_user.email  %>
-  <%= f.text_field :senderid , :value=> current_user.id %>
-  <%= f.text_field :user_id, :value => @user.id %>
+<!-- User Profile Page -->
+<div class="col-md-7 user-profile">
+  Name: <%= @user.full_name %>
+  <br>
+  Email: <%= user.email %>
+  <br>
 </div>
-Subject
-  <%= f.text_field :subject, :value => '' %>
-  <br>
-  <br>
-Body
-  <%= f.text_area :body, :value => '' %>
-  <%= f.submit %>
-<% end %>
-<% end %>
+
+
+
+<!-- Messaging Between Users -->
+
+<div class="col-md-5" user-messages>
+  <%= form_for Message.new() do |f| %>
+  <div style='display: none;' >
+    <%= f.text_field :sender, :value => current_user.email  %>
+    <%= f.text_field :senderid , :value=> current_user.id %>
+    <%= f.text_field :user_id, :value => @user.id %>
+  </div>
+  Subject
+    <%= f.text_field :subject, :value => '' %>
+    <br>
+    <br>
+  Body
+    <%= f.text_area :body, :value => '' %>
+    <%= f.submit %>
+  <% end %>
+  <% end %>
+<div>
